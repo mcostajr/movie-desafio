@@ -7055,6 +7055,11 @@ lodash._reinterpolate@^3.0.0:
   resolved "https://registry.yarnpkg.com/lodash._reinterpolate/-/lodash._reinterpolate-3.0.0.tgz#0ccf2d89166af03b3663c796538b75ac6e114d9d"
   integrity sha1-DM8tiRZq8Ds2Y8eWU4t1rG4RTZ0=
 
+lodash.debounce@^4:
+  version "4.0.8"
+  resolved "https://registry.yarnpkg.com/lodash.debounce/-/lodash.debounce-4.0.8.tgz#82d79bff30a67c4005ffd5e2515300ad9ca4d7af"
+  integrity sha1-gteb/zCmfEAF/9XiUVMArZyk168=
+
 lodash.memoize@^4.1.2:
   version "4.1.2"
   resolved "https://registry.yarnpkg.com/lodash.memoize/-/lodash.memoize-4.1.2.tgz#bcc6c49a42a2840ed997f323eada5ecd182e0bfe"
@@ -9110,6 +9115,14 @@ react-cssfx-loading@^1.0.3:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/react-cssfx-loading/-/react-cssfx-loading-1.0.3.tgz#8855632243a1154a01916311839a4f0b07705c25"
   integrity sha512-Iqj1A0HNdi6oNyhjr+ZGx8PMfn/3J5+Iw+I0oTmFgL5rct3F4fgi56tnbQCdRgUdNaC2jjYYhW2Ujh8jVjkfKA==
+
+react-debounce-input@^3.2.5:
+  version "3.2.5"
+  resolved "https://registry.yarnpkg.com/react-debounce-input/-/react-debounce-input-3.2.5.tgz#3a29682c4b9dcd62694d6e03f85d7bfa96cec433"
+  integrity sha512-WDc9nvZ8E/cT4nW1RlD/r+Nsc5Z5+Jmj2v9HT9RzsPtxkwRTQUBCKJvdt1fCYy5ME/nQPoqVYmWUWSv7whGmig==
+  dependencies:
+    lodash.debounce "^4"
+    prop-types "^15.7.2"
 
 react-dev-utils@^11.0.3:
   version "11.0.4"
