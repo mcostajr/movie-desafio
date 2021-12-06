@@ -1,4 +1,26 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   font-family: 'Abel', sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+:root {
+  --white: #FFF;
+  --blue-100: #00E8E4;
+  --blue-200: #B8CBD6;
+  --blue-300: #79EDEB;
+  --blue-400: #6497B8;
+  --blue-500: #116193;
+  --gray-100: #F2F2F2;
+  --gray-200: #EBEBEB;
+  --text-100: #C1C1C1;
+  --text-200: #7A7A7A;
+  --text-300: #555555;
 }
