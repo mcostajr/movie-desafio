@@ -1,0 +1,17 @@
+.genresList {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
+  gap: 5px;
+  
+  .genres {
+    color: var(--blue-500);
+    background: var(--white);
+    border: 1px solid var(--blue-500);
+    border-radius: 20px;
+    padding: 5px;
+    margin: 0;
+    list-style: none;
+  }
+}
