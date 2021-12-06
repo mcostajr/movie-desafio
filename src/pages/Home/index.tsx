@@ -7,10 +7,12 @@ import styles from './styles.module.scss';
 function Home() {
 	return (
 		<div className={styles.container}>
-			<SearchProvider>
-				<Search />
-        <MovieList/>
-			</SearchProvider>
+			<main className={styles.wrapper}>
+				<SearchProvider>
+					<Search />
+					<MovieList/>
+				</SearchProvider>
+      </main>
 		</div>
 	);
 }
