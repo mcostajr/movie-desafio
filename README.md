@@ -11,7 +11,7 @@
 ## Instalação, execução e compilação
 
 1. Faça um clone desse repositório;
-2. Entre na pasta `cd cubos-movies`;
+2. Entre na pasta `cd movie-desafio`;
 3. Rode `yarn` dentro da pasta para instalar as dependências ;
 4. Na pasta execute `yarn start` pra iniciar o servidor de desenvolvimento;
 5. Compilar o aplicativo para produção na pasta `build`. Execute `yarn build`;
