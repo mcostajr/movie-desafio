@@ -1,0 +1,23 @@
+.container {
+  margin: 50px 0;
+
+  .searchBar{
+    width: 100%;
+    padding: 20px;
+    border: 0;
+    border-radius: 20px;
+    background: var(--gray-200);
+    font-family: 'Abel';
+    font-size: 1rem;
+
+    color: var(--blue-500);
+    
+    &::placeholder {
+      color: var(--blue-400);
+    }
+
+    &:focus {
+      outline: 0;
+    }
+  }
+}
