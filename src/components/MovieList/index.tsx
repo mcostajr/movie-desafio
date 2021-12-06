@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { SearchContext } from '../../contexts/SearchContext';
 import Genres from '../Genres';
 import LoadingMoveList from '../LoadingMoveList';
-import VoteRanger from '../VoteRanger';
 import styles from './styles.module.scss';
 
 function MovieList(props: any) {
@@ -31,7 +30,11 @@ function MovieList(props: any) {
                     </div>
                     <div className={styles.descriptionTitle}>
                       <div className={styles.descriptionTitleWrapper}>
-                        <VoteRanger value={movie.vote_average}/>
+                        <div className={styles.containerCircle}>
+                          <div className={styles.circle}>
+                            {movie && <span>{movie.vote_average*10}%</span>}
+                          </div>
+                        </div>
                         <div className={styles.rightWrapper}>
                           <Link to={`/movie/${movie.id}`}>
                             <span className={styles.title}>{movie.title}</span>
