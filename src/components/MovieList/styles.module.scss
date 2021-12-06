@@ -1,0 +1,132 @@
+.container {
+
+  .movieList{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    @media (max-width: 768px) {
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    
+    .movieContainer {
+      font-family: 'Abel';
+      display: flex;
+
+      @media (max-width: 768px) {
+        flex-direction: column;
+      }
+
+      .postContainer {
+        height: 300px;
+        width: 200px;
+        
+        .poster {
+          height: auto;
+          width: 100%;
+        }
+      }
+
+      .movieDescription {
+        position: relative;
+        min-width: calc(100% - 200px);
+
+        .descriptionHeader {
+          background: var(--blue-500);
+          color: var(--blue-200);
+          height: 70px;
+
+          @media (max-width: 768px) {
+            display: none;
+          }
+        }
+
+        .descriptionTitle {
+          z-index: 1;
+          
+          @media (min-width: 769px) {
+            position: absolute;
+            width: calc(100% - 30px);
+            transform: translateY(-50%);
+            margin-left: 30px;
+          }
+
+          .descriptionTitleWrapper {
+            display: flex;
+            width: calc(100% - 10px);
+
+            @media (min-width: 769px) {
+              gap: 10px;
+            }
+            .rightWrapper {
+              width: 145px;
+
+              @media (min-width: 769px) {
+                display: flex;
+
+                flex-direction: column;
+                transform: translateY(-10%);
+                width: calc(100% - 95px);
+              }
+              
+              .title {
+                display: block;
+                font-size: 2.5rem;
+                color: var(--blue-200);
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+
+                @media (max-width: 768px) {
+                  font-size: 1rem;
+                  color: var(--text-300);
+                  font-weight: 600;
+                }
+              }
+
+              .date {
+                color: var(--text-300);
+                font-size: 1.2rem;
+
+                @media (max-width: 768px) {
+                  font-size: 1rem;
+                }
+              }
+            }
+          }
+        }
+
+        .descriptionAbout {
+          position: relative;
+          display: flex;
+          align-items: center;
+          font-size: 1rem;
+          background: var(--gray-200);
+          height: 230px;
+          
+          @media (max-width: 768px) {
+            display: none;
+          }
+          
+          .descriptionAboutWrapper {
+            margin-left: 20px;
+            
+            .description {
+              color: var(--text-300);
+              font-size: 1.1rem;
+              font-weight: 600;
+              max-height: 110px;
+              overflow: auto;
+            }
+          }
+        }
+        
+      }
+    }
+  }
+}
