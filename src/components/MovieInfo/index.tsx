@@ -3,12 +3,14 @@ import styles from './styles.module.scss'
 import ContentLoader from 'react-content-loader'
 import { Spin } from "react-cssfx-loading";
 import { useContext } from 'react';
-import { MovieContext } from '../../contexts/MovieContext';
-import SubInfo from './DetailsInfo';
+import DetailsInfo from './DetailsInfo';
+import { MovieType } from '../../pages/Movie';
 
-function MovieInfo() {
+interface MovieInfoType {
+  movie: MovieType | null;
+}
 
-  const { movie } = useContext(MovieContext);
+function MovieInfo({movie}: MovieInfoType) {
 
   return (
     <div>
@@ -47,12 +49,12 @@ function MovieInfo() {
             <div className={styles.information}>
               <h2>Informações</h2>
               <div className={styles.infolist}>
-                <SubInfo title="Situação" value={movie?.status}/>
-                <SubInfo title="Idioma" value={movie?.original_language}/>
-                <SubInfo title="Duração" value={movie?.runtime}/>
-                <SubInfo title="Orçamento" value={movie?.budget}/>
-                <SubInfo title="Receita" value={movie?.revenue}/>
-                <SubInfo title="Lucro" value={movie?.gain}/>
+                <DetailsInfo title="Situação" value={movie?.status}/>
+                <DetailsInfo title="Idioma" value={movie?.original_language}/>
+                <DetailsInfo title="Duração" value={movie?.runtime}/>
+                <DetailsInfo title="Orçamento" value={movie?.budget}/>
+                <DetailsInfo title="Receita" value={movie?.revenue}/>
+                <DetailsInfo title="Lucro" value={movie?.gain}/>
               </div>
               <div className={styles.more}>
                 {!movie ? 

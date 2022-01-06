@@ -1,6 +1,5 @@
 import { useContext } from 'react';
 import ContentLoader from 'react-content-loader'
-import { MovieContext } from '../../../contexts/MovieContext';
 
 import styles from './styles.module.scss'
 
@@ -11,12 +10,10 @@ interface SubInfoProps {
 
 function DetailsInfo({title, value}: SubInfoProps) {
 
-  const {movie} = useContext(MovieContext);
-
   return (
     <div className={styles.info}>
     <span>{title}</span>
-      {!movie ?
+      {!value ?
         <ContentLoader
         height={10}
         width={50}

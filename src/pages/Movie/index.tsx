@@ -6,9 +6,30 @@ import { useParams } from "react-router-dom"
 import YouTube from "react-youtube"
 import MovieInfo from "../../components/MovieInfo"
 import styles from './styles.module.scss'
-import { MovieContext, MovieType } from "../../contexts/MovieContext"
 import { api } from "../../services/axios"
 import { convertDurationToTimeString } from "../../utils/convertDurationToTimeString"
+
+export type MovieType = {
+  id: number;
+  title: string;
+  release_date: string;
+  overview: string;
+  poster_path: string;
+  revenue: string;
+  budget: string;
+  status: string;
+  runtime: string;
+  genres: string[];
+  gain: string;
+  original_language: string;
+  vote_average: number;
+  video: VideoType;
+}
+
+interface VideoType {
+  key: string;
+}
+
 
 function Movie() {
   const [ movie, setMovie] = useState<MovieType | null>(null)
@@ -56,25 +77,19 @@ function Movie() {
   })
 
   return (
-    <MovieContext.Provider
-      value={{
-        movie
-      }}
-    >
-      <div className={styles.container}>
-        <section className={styles.movieSec}>
-          <MovieInfo />
-        </section>
-        <section className={styles.videoSec}>
-          {movie?.video && 
-            <YouTube 
-            className={styles.trailer} 
-            videoId={movie?.video.key}
-            />
-          }
-        </section>
-      </div>
-    </MovieContext.Provider>
+    <div className={styles.container}>
+      <section className={styles.movieSec}>
+        <MovieInfo movie={movie}/>
+      </section>
+      <section className={styles.videoSec}>
+        {movie?.video && 
+          <YouTube 
+          className={styles.trailer} 
+          videoId={movie?.video.key}
+          />
+        }
+      </section>
+    </div>
   )
 }
 
