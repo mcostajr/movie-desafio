@@ -1,42 +1,21 @@
+import { useEffect, useState } from "react"
 import { format, parseISO } from "date-fns"
 import ptBR from "date-fns/locale/pt-BR"
-import { useEffect, useState } from "react"
-import { useParams } from "react-router"
-import { api } from "../../services/axios"
-import { convertDurationToTimeString } from "../../utils/convertDurationToTimeString"
-import styles from './styles.module.scss'
+import { useTranslation } from "react-i18next"
+import { useParams } from "react-router-dom"
 import YouTube from "react-youtube"
 import MovieInfo from "../../components/MovieInfo"
-import { useTranslation } from "react-i18next"
-
-export type MovieType = {
-  id: number;
-  title: string;
-  release_date: string;
-  overview: string;
-  poster_path: string;
-  revenue: string;
-  budget: string;
-  status: string;
-  runtime: string;
-  genres: string[];
-  gain: string;
-  original_language: string;
-  vote_average: number;
-  video: VideoType;
-}
-
-type VideoType = {
-  key: string;
-}
+import styles from './styles.module.scss'
+import { MovieContext, MovieType } from "../../contexts/MovieContext"
+import { api } from "../../services/axios"
+import { convertDurationToTimeString } from "../../utils/convertDurationToTimeString"
 
 function Movie() {
-  
-  let { id } = useParams()
   const [ movie, setMovie] = useState<MovieType | null>(null)
+  let { id } = useParams()
   const { t } = useTranslation()
 
-  async function fetchMovie() {
+  const fetchMovie  = async () => {
     const { data} = await api.get(`/movie/${id}`, {
       params: {
         api_key: process.env.REACT_APP_API_KEY,
@@ -77,19 +56,25 @@ function Movie() {
   })
 
   return (
-    <div className={styles.container}>
-      <section className={styles.movieSec}>
-        <MovieInfo movie={movie}/>
-      </section>
-      <section className={styles.videoSec}>
-        {movie?.video && 
-          <YouTube 
+    <MovieContext.Provider
+      value={{
+        movie
+      }}
+    >
+      <div className={styles.container}>
+        <section className={styles.movieSec}>
+          <MovieInfo />
+        </section>
+        <section className={styles.videoSec}>
+          {movie?.video && 
+            <YouTube 
             className={styles.trailer} 
             videoId={movie?.video.key}
-          />
-        }
-      </section>
-    </div>
+            />
+          }
+        </section>
+      </div>
+    </MovieContext.Provider>
   )
 }
 
