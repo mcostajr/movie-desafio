@@ -1,13 +1,13 @@
-import { useEffect, useState } from "react"
 import { format, parseISO } from "date-fns"
 import ptBR from "date-fns/locale/pt-BR"
-import { useTranslation } from "react-i18next"
+import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
-import YouTube from "react-youtube"
-import MovieInfo from "../../components/MovieInfo"
-import styles from './styles.module.scss'
 import { api } from "../../services/axios"
 import { convertDurationToTimeString } from "../../utils/convertDurationToTimeString"
+import styles from './styles.module.scss'
+import YouTube from "react-youtube"
+import MovieInfo from "../../components/MovieInfo"
+import { useTranslation } from "react-i18next"
 
 export type MovieType = {
   id: number;
@@ -32,11 +32,12 @@ interface VideoType {
 
 
 function Movie() {
-  const [ movie, setMovie] = useState<MovieType | null>(null)
+
   let { id } = useParams()
+  const [ movie, setMovie] = useState<MovieType | null>(null)
   const { t } = useTranslation()
 
-  const fetchMovie  = async () => {
+  async function fetchMovie() {
     const { data} = await api.get(`/movie/${id}`, {
       params: {
         api_key: process.env.REACT_APP_API_KEY,
@@ -84,8 +85,8 @@ function Movie() {
       <section className={styles.videoSec}>
         {movie?.video && 
           <YouTube 
-          className={styles.trailer} 
-          videoId={movie?.video.key}
+            className={styles.trailer} 
+            videoId={movie?.video.key}
           />
         }
       </section>
