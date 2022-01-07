@@ -3,92 +3,57 @@ import styles from './styles.module.scss'
 import ContentLoader from 'react-content-loader'
 import { Spin } from "react-cssfx-loading";
 import { useContext } from 'react';
-import DetailsInfo from './DetailsInfo';
+import { MovieInformation } from './MovieInformation';
 import { MovieType } from '../../pages/Movie';
+import { LoaderText } from '../LoaderText';
+import { VoteAverage } from '../VoteAverage';
 
 interface MovieInfoType {
-  movie: MovieType | null;
+  movie?: MovieType | null;
 }
 
 function MovieInfo({movie}: MovieInfoType) {
 
   return (
     <div>
-      <div className={styles.headerContainer}>
+      <header className={styles.headerContainer}>
         <div className={styles.details}>
           {!movie ? 
-            <ContentLoader
-              height={80}
-              width={'100%'}
-            >
-              <rect x="50" y="30" rx="4" ry="4" width="20%" height="20" />
-            </ContentLoader>
+            <LoaderText marginLeft="30" height="20" width="40%"/>
             : 
             <h1>{movie.title}</h1>
           }
           <span>{movie?.release_date}</span>
         </div>
-      </div>
+      </header>
       <div className={styles.bodyContainer}>
         <div className={styles.wrapper}>
           <div className={styles.description}>
             <div className={styles.sinopse}>
               <h2>Sinopse</h2>
               {!movie ?
-                <ContentLoader
-                  height={80}
-                  width={'100%'}
-                >
-                  <rect x="0" y="10" rx="4" ry="4" width="100%" height="10" />
-                  <rect x="0" y="30" rx="4" ry="4" width="100%" height="10" />
-                </ContentLoader>
+                <LoaderText height="10" line={5}/>
                 :
                 <p className={styles.overview}>{movie.overview}</p>
               }
             </div>
-            <div className={styles.information}>
-              <h2>Informações</h2>
-              <div className={styles.infolist}>
-                <DetailsInfo title="Situação" value={movie?.status}/>
-                <DetailsInfo title="Idioma" value={movie?.original_language}/>
-                <DetailsInfo title="Duração" value={movie?.runtime}/>
-                <DetailsInfo title="Orçamento" value={movie?.budget}/>
-                <DetailsInfo title="Receita" value={movie?.revenue}/>
-                <DetailsInfo title="Lucro" value={movie?.gain}/>
-              </div>
-              <div className={styles.more}>
-                {!movie ? 
-                  <ContentLoader
-                  height={30}
-                  width={'100%'}
-                  >
-                    <rect x="0" y="0" rx="4" ry="4" width="100" height="30" />
-                  </ContentLoader>
-                  :
-                  <Genres genres={movie.genres}/>
-                }
-                <div className={styles.containerCircle}>
-                  <div className={styles.circle}>
-                    {movie ? 
-                      <span>{movie.vote_average*10}%</span>
-                      :
-                      <Spin color="#f5f6f7"/>
-                    }
-                  </div>
-                </div>
-              </div>
+            
+            <MovieInformation />
+
+            <div className={styles.more}>
+              {!movie ? 
+                <LoaderText radiusX="20" radiusY="20" height="30" width="100"/>
+                :
+                <Genres genres={movie.genres}/>
+              }
+              <VoteAverage vote_average={movie?.vote_average}/>
             </div>
           </div>
         </div>
         <div className={styles.postContainer}>
           <div className={styles.postWrapper}>
             {!movie ?
-              <ContentLoader
-                height={'100%'}
-                width={'100%'}
-              >
-                <rect x="0" y="0" rx="4" ry="4" width="100%" height="100%" />
-              </ContentLoader>
+              <Spin height="5em" width="5em" color="#c6cbd1"/>
               :
               <img className={styles.post} src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt="" />
             }

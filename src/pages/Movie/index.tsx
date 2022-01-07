@@ -13,7 +13,7 @@ export type MovieType = {
   id: number;
   title: string;
   release_date: string;
-  overview: string;
+  overview?: string;
   poster_path: string;
   revenue: string;
   budget: string;
