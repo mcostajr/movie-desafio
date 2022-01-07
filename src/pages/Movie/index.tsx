@@ -1,7 +1,7 @@
 import { format, parseISO } from "date-fns"
 import ptBR from "date-fns/locale/pt-BR"
 import { useEffect, useState } from "react"
-import { useParams } from "react-router"
+import { useParams } from "react-router-dom"
 import { api } from "../../services/axios"
 import { convertDurationToTimeString } from "../../utils/convertDurationToTimeString"
 import styles from './styles.module.scss'
@@ -26,12 +26,13 @@ export type MovieType = {
   video: VideoType;
 }
 
-type VideoType = {
+interface VideoType {
   key: string;
 }
 
+
 function Movie() {
-  
+
   let { id } = useParams()
   const [ movie, setMovie] = useState<MovieType | null>(null)
   const { t } = useTranslation()
