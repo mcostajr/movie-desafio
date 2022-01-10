@@ -1,6 +1,6 @@
 import ContentLoader from "react-content-loader"
 
-function LoadingMoveList() {
+export function LoadingCard() {
   return (
     <div>
       {window.screen.width > 768 ? 
@@ -33,5 +33,3 @@ function LoadingMoveList() {
     </div>
   )
 }
-
-export default LoadingMoveList

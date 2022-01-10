@@ -1,0 +1,24 @@
+.information {
+  position: relative;
+  max-width: 100%;
+  
+  h2 {
+    color: var(--blue-500);
+
+    &:after {
+      position: absolute;
+      content: '';
+      border: 1px solid var(--blue-300);
+      width: 90%;
+      transform: translate(-110px, 30px);
+    }
+  }
+}
+
+.infolist{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 50px;
+  margin-left: 5px;
+}

@@ -3,14 +3,14 @@
   flex-direction: column;
   align-items: center;
 
-  span {
-    &:first-child {
-      color: var(--blue-500);
-      font-size: 1.2rem;
-    }
-    &:last-child {
-      color: var(--text-300);
-    }
+  h3 {
+    color: var(--blue-500);
+    margin: 0;
+    font-size: 1.2rem;
+  }
+
+  p {
+    color: var(--text-300);
   }
 
   .languages {

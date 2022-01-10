@@ -13,7 +13,7 @@ export type MovieType = {
   id: number;
   title: string;
   release_date: string;
-  overview: string;
+  overview?: string;
   poster_path: string;
   revenue: string;
   budget: string;
@@ -30,9 +30,7 @@ interface VideoType {
   key: string;
 }
 
-
 function Movie() {
-
   let { id } = useParams()
   const [ movie, setMovie] = useState<MovieType | null>(null)
   const { t } = useTranslation()
@@ -74,7 +72,7 @@ function Movie() {
     if(movie)
       return
 
-      fetchMovie()
+      setTimeout(() => fetchMovie(),3000)
   })
 
   return (
