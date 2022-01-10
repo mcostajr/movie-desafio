@@ -1,12 +1,11 @@
+import React from 'react';
 import Genres from '../Genres'
 import styles from './styles.module.scss'
-import ContentLoader from 'react-content-loader'
 import { Spin } from "react-cssfx-loading";
-import { useContext } from 'react';
-import { MovieInformation } from './MovieInformation';
+import { MovieInformation } from './Information';
 import { MovieType } from '../../pages/Movie';
-import { LoaderText } from '../LoaderText';
 import { VoteAverage } from '../VoteAverage';
+import { LoaderText } from '../Loader/LoaderText';
 
 interface MovieInfoType {
   movie?: MovieType | null;
@@ -15,7 +14,7 @@ interface MovieInfoType {
 function MovieInfo({movie}: MovieInfoType) {
 
   return (
-    <div>
+    <>
       <header className={styles.headerContainer}>
         <div className={styles.details}>
           {!movie ? 
@@ -32,21 +31,30 @@ function MovieInfo({movie}: MovieInfoType) {
             <div className={styles.sinopse}>
               <h2>Sinopse</h2>
               {!movie ?
-                <LoaderText height="10" line={5}/>
-                :
-                <p className={styles.overview}>{movie.overview}</p>
+              <LoaderText height="10" width="96%" line={5}/>
+              :
+              <p className={styles.overview}>{movie.overview}</p>
               }
             </div>
             
-            <MovieInformation />
+            <MovieInformation movieInfo={[
+              { title: 'Situação', content: movie?.status },
+              { title: 'Idioma', content: movie?.original_language },
+              { title: 'Duração', content: movie?.runtime },
+              { title: 'Orçamento', content: movie?.budget },
+              { title: 'Receita', content: movie?.revenue },
+              { title: 'Lucro', content: movie?.gain }
+            ]}/>
 
             <div className={styles.more}>
-              {!movie ? 
-                <LoaderText radiusX="20" radiusY="20" height="30" width="100"/>
-                :
+            {!movie ? 
+              <LoaderText radiusX="20" radiusY="20" height="30" width="100"/>
+              :
+              <>
                 <Genres genres={movie.genres}/>
-              }
-              <VoteAverage vote_average={movie?.vote_average}/>
+                <VoteAverage vote_average={movie?.vote_average}/>
+              </>
+            }
             </div>
           </div>
         </div>
@@ -60,7 +68,7 @@ function MovieInfo({movie}: MovieInfoType) {
           </div>
         </div>
       </div>
-    </div>
+    </>
   )
 }
 

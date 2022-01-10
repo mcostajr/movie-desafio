@@ -30,9 +30,7 @@ interface VideoType {
   key: string;
 }
 
-
 function Movie() {
-
   let { id } = useParams()
   const [ movie, setMovie] = useState<MovieType | null>(null)
   const { t } = useTranslation()
@@ -74,7 +72,7 @@ function Movie() {
     if(movie)
       return
 
-      fetchMovie()
+      setTimeout(() => fetchMovie(),3000)
   })
 
   return (

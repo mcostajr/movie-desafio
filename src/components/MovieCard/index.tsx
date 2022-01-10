@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import Genres from "../Genres";
+import { VoteAverage } from "../VoteAverage";
 import s from './styles.module.scss';
 
 interface MovieDataProps {
@@ -9,7 +10,7 @@ interface MovieDataProps {
   release_date: string;
   overview: string;
   genre_ids: string[];
-
+  vote_average: number;
 }
 
 interface MovieCardProps {
@@ -30,11 +31,7 @@ export function MovieCard({movieData}: MovieCardProps) {
           </div>
           <div className={s.descriptionTitle}>
             <div className={s.descriptionTitleWrapper}>
-              {/* <div className={s.containerCircle}>
-                <div className={s.circle}>
-                  {movie && <span>{vote_average*10}%</span>}
-                </div>
-              </div> */}
+              <VoteAverage height="85px" width="85px" vote_average={movieData.vote_average}/>
               <div className={s.rightWrapper}>
                 <Link to={`/movie/${movieData.id}`}>
                   <span className={s.title}>{movieData.title}</span>

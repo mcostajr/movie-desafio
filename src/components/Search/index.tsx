@@ -16,7 +16,8 @@ function Search(){
 
   useEffect(() => {
     if(!query.length)
-      return fetchMovieList()
+    setTimeout(() => fetchMovieList(),5000)  
+    
 
     if(query.length > 2) {
       setIsSearch(true);
